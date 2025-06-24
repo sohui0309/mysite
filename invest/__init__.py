@@ -51,6 +51,8 @@ class Quant:
                                    self.col,
                                    _cnt)
         trade_df = boll.create_trade(band_df)
+        # trade_df에 trade 컬럼의 결측치를 "" 채워준다. 
+        trade_df['trade'].fillna("", inplace=True)
         df, acc_rtn = boll.create_rtn(trade_df)
         print(f"볼린져밴드 전략으로 최종 수익율은 {acc_rtn}")
         return df, acc_rtn
